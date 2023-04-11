@@ -1,0 +1,26 @@
+type Mutation {
+  addBook(newBook: NewBookInput!): Book! @adapter(service: "AddBookService")
+  deleteBookById(id : ID!) : Book! @adapter(service: "DeleteBookService")
+  deleteAllBooks: [Book!]! @adapter(service: "DeleteAllBooksService")
+  updateBookById(id : ID!, updatedBook: NewBookInput!) : Book @adapter(service: "UpdateBookService")
+}
+
+type Query {
+  bookById(id: ID!): Book @adapter(service: "GetBookService")
+  getAllBooks: [Book!]! @adapter(service: "GetAllBooksService")
+}
+
+type Book {
+  id: ID!
+  name: String!
+  status: Status!
+  price: Int!
+}
+
+enum Status {
+  AVAILABLE
+  PENDING
+  SOLD
+}
+
+directive @adapter(service:String!) on FIELD_DEFINITION

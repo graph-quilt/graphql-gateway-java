@@ -1,0 +1,29 @@
+{
+  "namespace": "PETSTORE",
+  "appId": "PetStore.Appid",
+  "type": "graphql-sdl",
+  "environments": {
+    "DEV": {
+      "endpoint": "http://localhost:9092/graphql"
+    },
+    "QA": {
+      "endpoint": "http://localhost:9092/graphql"
+    },
+    "E2E": {
+      "endpoint": "http://localhost:9092/graphql"
+    },
+    "PERF": {
+      "endpoint": "http://localhost:9092/graphql"
+    },
+    "PROD-STG": {
+      "endpoint": "http://localhost:9092/graphql"
+    },
+    "PROD": {
+      "endpoint": "http://localhost:9092/graphql"
+    }
+  },
+  "domainTypes": [
+    "Pet",
+    "Status"
+  ]
+}

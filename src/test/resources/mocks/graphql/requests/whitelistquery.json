@@ -1,0 +1,5 @@
+{
+  "query": "query { cgcs dos: allCasesAssignedToMe { id }  v4os: consumer { identity { personalInfo { currentFamilyName } } } }",
+  "variables": null,
+  "operationName": null
+}

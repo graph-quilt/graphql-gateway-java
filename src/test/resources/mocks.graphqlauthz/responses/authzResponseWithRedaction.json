@@ -1,0 +1,26 @@
+{
+  "errors": [
+    {
+      "message": "403 - Not authorized to access field=lastName of type=Author",
+      "locations": [
+        {
+          "line": 1,
+          "column": 54
+        }
+      ],
+      "extensions": {
+        "classification": "DataFetchingException"
+      }
+    }
+  ],
+  "data": {
+    "book": {
+      "id": "book-2",
+      "name": "Moby Dick",
+      "pageCount": 635,
+      "author": {
+        "firstName": "Herman"
+      }
+    }
+  }
+}

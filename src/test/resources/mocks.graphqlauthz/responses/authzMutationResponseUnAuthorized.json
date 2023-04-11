@@ -1,0 +1,41 @@
+{
+  "errors":[
+    {
+      "message":"403 - Not authorized to access field=createNewBookRecord of type=Mutation",
+      "locations":[
+        {
+          "line":1,
+          "column":12
+        }
+      ],
+      "extensions":{
+        "classification":"DataFetchingException"
+      }
+    },
+    {
+      "message":"403 - Not authorized to access field=updateBookRecord of type=Mutation",
+      "locations":[
+        {
+          "line":1,
+          "column":220
+        }
+      ],
+      "extensions":{
+        "classification":"DataFetchingException"
+      }
+    },
+    {
+      "message":"403 - Not authorized to access field=removeBookRecord of type=Mutation",
+      "locations":[
+        {
+          "line":1,
+          "column":309
+        }
+      ],
+      "extensions":{
+        "classification":"DataFetchingException"
+      }
+    }
+  ],
+  "data":{}
+}

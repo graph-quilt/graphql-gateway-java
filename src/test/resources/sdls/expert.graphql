@@ -1,0 +1,61 @@
+# Type
+
+type LearningTeam {
+    id:ID!
+    name: String
+    learningManagementSystem: String
+}
+type QualityOfServiceSummary {
+    agentId: String
+    startDate: String
+    endDate: String
+    totalContacts: Int
+    latestContactDate: String
+    earliestContactDate: String
+    averageHandleTime: Float
+    averageSatisfactionScore: Float
+    businessUnits: [String!]
+    channels: [String!]
+}
+
+type JobDescription {
+    widsProfile: String @deprecated(reason: "reason:- WIDS will be serving this.")
+    widsSegment: String @deprecated(reason: "reason:- WIDS will be serving this.")
+    widsLineOfBusiness: String @deprecated(reason: "reason:- WIDS will be serving this.")
+    widsBusinessUnit: String @deprecated(reason: "reason:- WIDS will be serving this.")
+    widsHireType: String @deprecated(reason: "reason:- WIDS will be serving this.")
+}
+
+#Queries
+type JobProfile {
+    jobDescription(corpId: ID!) : JobDescription
+    skills(corpId : ID!) : [String]
+}
+
+
+type JobPerformance {
+    qualityOfServiceSummary(corpId : ID!, limit: Int, startDate: String, endDate: String): QualityOfServiceSummary
+}
+
+type JobTraining {
+    learningTeams(corpId : ID!) : [LearningTeam]
+}
+
+# RootQuery for expert
+type ExpertDataRootQuery {
+    jobPerformance : JobPerformance
+    jobTraining : JobTraining
+    jobProfile : JobProfile
+}
+
+
+# The Root Query for the application
+type Query {
+    expert: ExpertDataRootQuery
+}
+
+schema {
+    query: Query
+}
+
+

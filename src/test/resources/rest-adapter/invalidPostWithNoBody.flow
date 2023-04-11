@@ -1,0 +1,44 @@
+Service service as GetBookService method GET {
+  Url -> @Config("endpoint")
+  Path -> ${"/books/{bookId}"}
+  Timeout -> ${@Config("timeout")}
+  @PathParam bookId -> ${requestContext.arguments.id}
+  @Header Accept -> ${"application/json"}
+}
+
+Service service as GetAllBooksService method GET {
+  Url -> @Config("endpoint")
+  Path -> ${"/books"}
+  Timeout -> ${@Config("timeout")}
+  @Header Accept -> ${"application/json"}
+}
+
+Service service as AddBookService method POST {
+     Url -> @Config("endpoint")
+      Path -> ${"/books"}
+      Timeout -> ${@Config("timeout")}
+      @Header Accept -> ${"application/json"}
+}
+
+Service service as UpdateBookService method PUT {
+    Url -> @Config("endpoint")
+    Path -> ${"/books/{bookId}"}
+    Timeout -> ${@Config("timeout")}
+    @PathParam bookId -> ${requestContext.arguments.id}
+    @Header Accept -> ${"application/json"}
+}
+
+Service service as DeleteBookService method DELETE {
+  Url -> @Config("endpoint")
+  Path -> ${"/books/{bookId}"}
+  Timeout -> ${@Config("timeout")}
+  @PathParam bookId -> ${requestContext.arguments.id}
+  @Header Accept -> ${"application/json"}
+}
+
+Service service as DeleteAllBooksService method DELETE {
+  Url -> @Config("endpoint")
+  Path -> ${"/books"}
+  Timeout -> ${@Config("timeout")}
+  @Header Accept -> ${"application/json"}
+}

@@ -1,0 +1,16 @@
+version: '3.2'
+
+services:
+  localstack:
+    image: localstack/localstack:0.10.4
+    container_name: local_aws_s3
+    ports:
+      - '4572:4572'
+      - '8055:8080'
+    environment:
+      - SERVICES=s3
+      - DEBUG=1
+      - DATA_DIR=/tmp/localstack/data
+    volumes:
+      - './.localstack:/tmp/localstack'
+      - '/var/run/docker.sock:/var/run/docker.sock'

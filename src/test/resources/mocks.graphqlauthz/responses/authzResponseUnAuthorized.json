@@ -1,0 +1,17 @@
+{
+  "errors": [
+    {
+      "message": "403 - Not authorized to access field=book of type=Query",
+      "locations": [
+        {
+          "line": 1,
+          "column": 9
+        }
+      ],
+      "extensions": {
+        "classification": "DataFetchingException"
+      }
+    }
+  ],
+  "data": {}
+}

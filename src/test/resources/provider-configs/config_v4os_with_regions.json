@@ -1,0 +1,51 @@
+{
+  "namespace": "V4OS",
+  "appId": "Intuit.tax.test",
+  "type": "Graphql-Sdl",
+  "forwardHeaders": [
+    "foo",
+    "bar",
+    "user_channel"
+  ],
+  "environments": {
+    "dev": {
+      "endpoint": "https://test-app-dev.api.intuit.com/graphql",
+      "uswest2" : {
+        "endpoint": "https://test-app-dev-west.api.intuit.com/graphql",
+        "timeout": 5001
+      },
+      "timeout": 4000
+    },
+    "qa": {
+      "endpoint": "https://test-app-cdev.api.intuit.com/graphql",
+      "uswest2" : {
+        "endpoint": "https://test-app-cdev-west.api.intuit.com/graphql",
+        "timeout": 5001
+      },
+      "useast2" : {
+        "endpoint": "https://test-app-cdev-east.api.intuit.com/graphql",
+        "timeout": 5002
+      }
+    },
+    "E2e": {
+      "endpoint": "https://test-app-e2e.api.intuit.com/graphql",
+      "timeout": 5003,
+      "uswest2" : {
+        "endpoint": "https://test-app-e2e-west.api.intuit.com/graphql"
+      }
+    },
+    "pErF": {
+      "endpoint": "http://test-app-prf.api.intuit.com/graphql",
+      "timeout": 4000,
+      "useast2" : {
+        "endpoint": "http://test-app-prf-east.api.intuit.com/graphql",
+        "unknownProperty": "dummyValue"
+      },
+      "unknownProperty": "dummyValue"
+    },
+    "PROD": {
+      "endpoint": "https://test-app.api.intuit.com/graphql"
+    }
+  },
+  "unknownProperty": "dummyValue"
+}

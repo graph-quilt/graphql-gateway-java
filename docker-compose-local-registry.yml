@@ -1,0 +1,32 @@
+version: '3.2'
+
+services:
+  localstack:
+    image: localstack/localstack:0.10.4
+    container_name: local_aws_s3
+    ports:
+      - '4572:4572'
+      - '8055:8080'
+    environment:
+      - SERVICES=s3
+      - DEBUG=1
+      - DATA_DIR=/tmp/localstack/data
+    volumes:
+      - './local_registry/dev:/tmp/registrations'
+      - './.localstack:/tmp/localstack'
+      - '/var/run/docker.sock:/var/run/docker.sock'
+      - './.aws:/docker-entrypoint-initaws.d'
+  graphql-gateway:
+    build:
+      context: .
+    depends_on:
+      - "localstack"
+    environment:
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
+      - AWS_S3_BUCKETS_USEAST2_ENDPOINT=http://host.docker.internal:4572
+      - AWS_S3_BUCKETS_USWEST2_ENDPOINT=http://host.docker.internal:4572
+    ports:
+      - 7000:7000
+

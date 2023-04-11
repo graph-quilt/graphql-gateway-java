@@ -1,0 +1,30 @@
+{
+  "data": {
+    "allCasesAssignedToMe": [
+      {
+        "id": "5001g00000557jHAAQ"
+      },
+      {
+        "id": "5001g00000557j7AAA"
+      }
+    ],
+    "allCases": [
+      {
+        "id": "5001g00000557jHAAQ"
+      },
+      {
+        "id": "5001g00000557j7AAA"
+      },
+      {
+        "id": "5001g00000557j7BBB"
+      }
+    ],
+    "consumer": {
+      "identity": {
+        "personalInfo": {
+          "currentFamilyName": ""
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+query {
+  standardTypes {
+    int
+    float
+    string
+    boolean
+    id
+  }
+}

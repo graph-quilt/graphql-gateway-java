@@ -1,0 +1,37 @@
+{
+  "consent": [
+    {
+      "consentId": "1111111-e6b5-4f4b-be2b-4a50cb4a6f26",
+      "authId": "ç12345678",
+      "consentType": "7216-Disclosure",
+      "consentTermRef": "2017",
+      "appAssetAlias": "Intuit.cg.turbo",
+      "origAppAssetAlias": "Intuit.cg.turbotax",
+      "startDate": 1520409600000,
+      "endDate": 1735718400000,
+      "consented": true,
+      "resource": [
+        "/TaxData/Tax17Return"
+      ],
+      "purpose": [
+        "Global7216"
+      ]
+    },
+    {
+      "consentId": "2222222-5962-425d-924f-b7d44da8502f",
+      "authId": "111111173572164",
+      "consentType": "IntuitBranding",
+      "consentTermRef": "1.0",
+      "appAssetAlias": "Intuit.cto.iam.ius",
+      "origAppAssetAlias": "Intuit.cto.iam.ius",
+      "startDate": 1520409600000,
+      "consented": true,
+      "resource": [
+        "/account"
+      ],
+      "purpose": [
+        "IAM"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+spring:
+  # This is used for searching properties files, YAML, profiles.
+  application:
+    name: GraphqlGateway
+  # Disable favicon
+  mvc:
+    favicon:
+      enabled: false
+  main:
+    allow-bean-definition-overriding: true
+
+# Disable server advertising its type and version
+server:
+  server-header: server
+  port: 7000
+  error:
+    include-message: always

@@ -1,0 +1,7 @@
+Service service as ServiceClient method POST {
+  Url -> @Config("endpoint")
+  Path -> ${"/books"}
+  Timeout -> ${@Config("timeout")}
+  @Header accept -> ${"application/json"}
+  @Body -> ${requestContext.arguments.newBook}
+}
