@@ -1,0 +1,555 @@
+schema {
+  query: QueryType
+}
+
+type QueryType {
+  consumer: ConsumerType
+}
+
+type ConsumerType {
+  finance: FinanceType
+}
+
+type NameValuePairType {
+  name: String
+  value: String
+}
+
+scalar Amount
+scalar Decimal
+
+
+type FinanceType {
+  tax: TaxType
+  creditReports: [CreditType]
+  creditReportDeltas: [CreditReportDeltaType]
+}
+
+type TaxType {
+  returns: [TaxReturnType]
+}
+
+type TaxType {
+  returnHeader : ReturnHeaderType
+  returnData : ReturnDataType
+  eFile : EFileType
+}
+
+type ReturnHeaderType {
+  taxYr : String
+}
+
+type ReturnDataType {
+  irs1040 : Irs1040Type
+  otherIncome: OtherIncomeType
+  ppPerson : PpPersonType
+  ppReturnInformation : PpReturnInformationType
+  irs1040ScheduleA : Irs1040ScheduleAType
+  irs1040ScheduleB : Irs1040ScheduleBType
+  pp1099Int : [Pp1099IntType]
+  pp1099Div : [Pp1099DivType]
+  irs1040ScheduleC : [Irs1040ScheduleCType]
+  irs1040ScheduleD : Irs1040ScheduleDType
+  irs1040ScheduleE1 : [Irs1040ScheduleE1Type]
+  irs1040ScheduleE2 : Irs1040ScheduleE2Type
+  scheduleEWorksheet : [ScheduleEWorksheetType]
+  irs1040ScheduleF : [Irs1040ScheduleFType]
+  carryoverWorksheet : CarryoverWorksheetType
+  selfEmployedRetirementContributionWorksheet : SelfEmployedRetirementContributionWorksheetType
+  irs1120SScheduleK1 : [Irs1120SScheduleK1Type]
+  irs1065SScheduleK1 : [Irs1065SScheduleK1Type]
+  irs1041ScheduleK1 : [Irs1041ScheduleK1Type]
+  irsW2 : [IrsW2Type]
+  iraContributionsWks : IraContributionsWksType
+  irs8949 : [Irs8949Type]
+  irs1098E : [Irs1098EType]
+  irs8889 : Irs8889Type
+  irs1099R : [Irs1099RType]
+  pp1099Misc : [Pp1099MiscType]
+  socialSecurityBenefitsWorksheet : SocialSecurityBenefitsWorksheetType
+  w2Summary : W2SummaryType
+  dependentCareEarnedIncomeWorksheetPP: DependentCareEarnedIncomeWorksheetPPType
+  alabama : StateReturnsType
+  alaska : StateReturnsType
+  americanSamoa : StateReturnsType
+  arizona : StateReturnsType
+  arkansas : StateReturnsType
+  california : StateReturnsType
+  colorado : StateReturnsType
+  connecticut : StateReturnsType
+  districtOfColumbia : StateReturnsType
+  delaware : StateReturnsType
+  florida : StateReturnsType
+  georgia : StateReturnsType
+  guam : StateReturnsType
+  hawaii : StateReturnsType
+  idaho : StateReturnsType
+  illinois : StateReturnsType
+  indiana : StateReturnsType
+  iowa : StateReturnsType
+  kansas : StateReturnsType
+  kentucky : StateReturnsType
+  louisiana : StateReturnsType
+  maine : StateReturnsType
+  maryland : StateReturnsType
+  massachusetts : StateReturnsType
+  michigan : StateReturnsType
+  minnesota : StateReturnsType
+  mississippi : StateReturnsType
+  missouri : StateReturnsType
+  montana : StateReturnsType
+  nebraska : StateReturnsType
+  nevada : StateReturnsType
+  newHampshire : StateReturnsType
+  newJersey : StateReturnsType
+  newMexico : StateReturnsType
+  newYork : StateReturnsType
+  northCarolina : StateReturnsType
+  northDakota : StateReturnsType
+  northernMarianasIslands : StateReturnsType
+  ohio : StateReturnsType
+  oklahoma : StateReturnsType
+  oregon : StateReturnsType
+  pennsylvania : StateReturnsType
+  puertoRico : StateReturnsType
+  rhodeIsland : StateReturnsType
+  southCarolina : StateReturnsType
+  southDakota : StateReturnsType
+  tennessee : StateReturnsType
+  texas : StateReturnsType
+  utah : StateReturnsType
+  vermont : StateReturnsType
+  virginia : StateReturnsType
+  virginIslands : StateReturnsType
+  washington : StateReturnsType
+  westVirginia : StateReturnsType
+  wisconsin : StateReturnsType
+  wyoming : StateReturnsType
+}
+
+type OtherIncomeType {
+  taxPayerIncomeAdditions: Amount
+  taxPayerIncomeSubtractions: Amount
+  spouseIncomeAdditions: Amount
+  spouseIncomeSubtractions: Amount
+  householdIncomeAdditions: Amount
+  householdIncomeSubtractions: Amount
+}
+
+type StateReturnsType {
+  taxAuthority: String
+  eFile : EFileType
+  refundInfo : RefundInfoType
+}
+
+type RefundInfoType {
+  refundAmt : Amount
+  balanceDueAmt : Amount
+}
+
+type EFileType {
+  status : String
+}
+
+type FilerInfoType {
+  agePP: Int
+  canBeClaimedAsDependentIndPP: Boolean
+  dateOfBirthPP: String
+  fullTimeStudentPP: Boolean
+  isNotSSNPP: Boolean
+  legallyBlindIndPP: Boolean
+  livedInAnotherStatePP: Boolean
+  occupationPP: String
+  personFullNamePP: PersonFullNamePPType
+  personMiddleInitialPP: String
+  personSuffixPP: String
+  ssnPP: String
+  stateOfResidencePP: String
+  willBeClaimedAsDependentIndPP: Boolean
+}
+
+type PersonFullNamePPType {
+  personFirstNm: String
+  personLastNm: String
+}
+
+type Irs1040Type {
+  adjustedGrossIncomeLine38AmtPP: Amount
+  totalIncomeAmt : Amount
+  taxpayerTotalIncomeAmtPP : Amount
+  spouseTotalIncomeAmtPP: Amount
+  householdTotalIncomeAmtPP: Amount
+  socSecBnftAmt : Amount
+  taxableSocSecAmt: Amount
+  businessIncomeLossAmt: Amount
+  individualReturnFilingStatusCd: String
+  refundAmt: Amount
+  balanceDueAmt: Amount
+  amendRefundAmt: Amount
+  amendBalanceDueAmt: Amount
+  wagesSalariesAndTipsAmt: Amount
+  estimatedTaxPaymentsAmt: Amount
+  healthSavingsAccountDedAmt: Amount
+  selfEmpIdSepSimpleQlfyPlansAmt: Amount
+  selfEmpldHealthInsDedAmt: Amount
+  iraDeductionAmt: Amount
+}
+
+type PpPersonType {
+  taxpayerFilerInfoPP : FilerInfoType
+  spouseFilerInfoPP :  FilerInfoType
+}
+
+type PpReturnInformationType {
+  dayTimePhoneNumberPP : String
+  usAddressPP : USAddressPPType
+  foreignAddressPP : ForeignAddressPP
+}
+
+type USAddressPPType {
+  addressLine1Txt: String
+  addressLine2Txt: String
+  cityNm: String
+  stateAbbreviationCd: String
+  zipCd: String
+}
+
+type ForeignAddressPP{
+  country: String
+  foreignProvinceOrCounty: String
+  zipCd: String
+}
+
+type Irs1040ScheduleAType {
+  realEstateTaxesAmt: Amount
+}
+
+type Irs1040ScheduleBType {
+  totalAmountofInterestIncome : Amount
+  totalOrdinaryDividendsAmt  : Amount
+  taxableInterestAmt : Amount
+  financialInterestInForeignCountry : Boolean
+}
+
+type Pp1099IntType {
+  interestIncomeAmtPP : Amount
+  earlyWithdrawalPenaltyAmtPP : Amount
+  interestOnBondsAndTreasuryAmtPP : Amount
+  taxExemptInterestAmtPP : Amount
+  payerNamePP : BusinessNameType
+  ownedBySpouse: Boolean
+  ownedJointly : Boolean
+}
+
+type Pp1099DivType {
+  payerNamePP : BusinessNameType
+  ordinaryDividendsAmtPP : Amount
+  capitalGainDistributionsAmtPP : Amount
+  ownedBySpouse : Boolean
+  ownedJointly : Boolean
+}
+
+type Irs1040ScheduleCType {
+  proprietorNm: String
+  tentativeProfitAmt: Amount
+  carAndTruckExpenseAmt: Amount
+  depletionExpenseAmt: Amount
+  depreciationAnd179ExpenseAmt: Amount
+  mealsAndEntertainmentExpenseAmt: Amount
+  grossIncomeAmt : Amount
+  totalExpensesAmt : Amount
+  totalOtherExpensesAmt: Amount
+  homeBusinessExpenseAmt: Amount
+  netProfitOrLossAmt: Amount
+  vehicles : [VehiclesType]
+  otherExpenses : [OtherExpensesType]
+  costOfGoodsSoldAmt_L42 : Amount
+  businessOperatedByTaxPayer : Boolean
+  businessOperatedBySpouse : Boolean
+  businessOperatedJointly : Boolean
+  taxpayer: Irs1040ScheduleCEZType
+  spouse: Irs1040ScheduleCEZType
+}
+
+type Irs1040ScheduleCEZType {
+  proprietorNm: String
+  netProfitAmt: Amount
+}
+
+type VehiclesType {
+  businessMilesDrivenAmt: Amount
+}
+
+type OtherExpensesType {
+  otherExpenseDescription: String
+  otherExpenseAmt: Amount
+}
+
+type Irs1040ScheduleDType {
+  shortTermCapitalGainOrLoss : Amount
+  longTermCapitalGainOrLoss : Amount
+  totalTermCapitalGainOrLoss : Amount
+  shortTermGainOrLoss1099B: Amount
+  shortTermGainOrLossBoxA: Amount
+  shortTermGainOrLossBoxB: Amount
+  shortTermGainOrLossBoxC: Amount
+  shortTermGainOrLossOtherForms: Amount
+  longTermGainOrLoss1099B: Amount
+  longTermGainOrLossBoxD: Amount
+  longTermGainOrLossBoxE: Amount
+  longTermGainOrLossBoxF: Amount
+  longTermGainOrLossOtherForms: Amount
+}
+
+type Irs1040ScheduleE1Type {
+  rentalIncome : [RentalIncomeType]
+  royaltyIncome : [RoyaltyIncomeType]
+  schEInsurance : [SchEInsuranceType]
+  schEMortgageInterest : [SchEMortgageInterestType]
+  schETaxes : [SchETaxesType]
+  schEDepreciation : [SchEDepreciationType]
+  schETenativeProfit : [SchETenativeProfitType]
+}
+
+type RentalIncomeType {
+  rentIncomeReceived: Amount
+}
+
+type RoyaltyIncomeType {
+  royaltyIncomeReceived: Amount
+}
+
+type SchEInsuranceType {
+  insuranceExp: Amount
+}
+
+type SchEMortgageInterestType {
+  mortgageInterestExp: Amount
+}
+
+type SchETaxesType {
+  taxesExp: Amount
+}
+
+type SchEDepreciationType {
+  depreciationExp: Amount
+}
+
+type SchETenativeProfitType {
+  tentativeProfit: Amount
+}
+
+type Irs1040ScheduleE2Type {
+  partnerSCorp : [PartnerSCorpType]
+}
+
+type PartnerSCorpType {
+  k1Name: String
+  passiveLoss: Amount
+  passiveIncome: Amount
+  nonPassiveLoss: Amount
+  nonPassiveIncome: Amount
+  description: String
+}
+
+type ScheduleEWorksheetType {
+  totalMortgageIntQual : Amount
+  depreciationExpense : Amount
+  totalRentalIncome : Amount
+  rentalOwnedBySpouse : Boolean
+  rentalOwnedJointly : Boolean
+}
+
+type Irs1040ScheduleFType {
+  netProfitOrLoss : Amount
+  carAndTruckExpenseAmt : Amount
+  depreciationExpenseAmt : Amount
+  gasFuelOilExpenseAmt : Amount
+  totalOtherExpenseAmt : Amount
+}
+
+type CarryoverWorksheetType {
+  pyLongTermCapLossCarryOver : Amount
+  pyShortTermCapLossCarryOver : Amount
+}
+
+type SelfEmployedRetirementContributionWorksheetType {
+  taxpayerWorksheet : WorksheetType
+  spouseWorksheet : WorksheetType
+}
+
+type WorksheetType {
+  sepContributionGrp : SepContributionGrpType
+}
+
+type SepContributionGrpType {
+  sepContributionTotalAmt : Amount
+}
+
+type Irs1120SScheduleK1Type {
+  corporationName: String
+  corporationAddress: String
+  corporationCity: String
+  corporationState: String
+  corporationZipCode : Int
+  shareholderName: String
+  shareholderAddress: String
+  shareholderCity: String
+  shareholderState: String
+  shareholderZipCode: Int
+  corpFinalK1: Boolean
+  corpAmendedK1: Boolean
+  ordinaryBusinessIncomeOrLoss : Amount
+  totalRentalIncomeOrLoss  : Amount
+  sCorpOwnedByTaxpayer: Boolean
+  sCorpOwnedBySpouse: Boolean
+  sCorpOwnedJointly: Boolean
+  itemsAffectingShareholderBasis : [ItemsAffectingShareholderBasisType]
+}
+
+type ItemsAffectingShareholderBasisType {
+  affectingShareholderBasisCd: String
+  amountAffectingShareholderBasis : Amount
+}
+
+
+type Irs1065SScheduleK1Type {
+  partnershipName : String
+  partnershipAddress : String
+  partnershipCity : String
+  partnershipState : String
+  partnershipZipCode : Int
+  partnerName : String
+  partnerAddress : String
+  partnerCity : String
+  partnerState : String
+  partnerZipCode: Int
+  partnerFinalK1 : Boolean
+  partnerAmendedK1 : Boolean
+  ordinaryBusinessIncomeOrLoss : Amount
+  totalRentalIncomeOrLoss : Amount
+  guaranteedPayments  : Amount
+  interestIncome : Amount
+  line19Distribution : [Line19DistributionType]
+  partnershipOwnedByTaxPayer : Boolean
+  partnershipOwnedBySpouse : Boolean
+  partnershipOwnedJointly : Boolean
+  beginningProfit  : Amount
+  endProfit  : Amount
+  beginningLoss  : Amount
+  endLoss  : Amount
+  beginningCapital : Amount
+  endCapital  : Amount
+}
+
+type Line19DistributionType {
+  distributionAmt: Amount
+}
+
+type Irs1041ScheduleK1Type {
+  estateTrustName: String
+  final1041EstateTrust: Boolean
+  interestIncomeAmt: Amount
+  ordinaryDividendsAmt: Amount
+  qualifiedDividendsAmt: Amount
+  shortTermCapGainAmt: Amount
+  longTermCapGainAmt: Amount
+  ordinaryBusinessIncomeAmt: Amount
+  rentalRealEstateIncomeAmt: Amount
+}
+
+type IrsW2Type {
+  employerEIN : String
+  employerName : BusinessNameType
+  wagesAmt : Amount
+  withholdingAmt  : Amount
+  ownedBySpouse : Boolean
+  w2StateTaxGrpPP : [W2StateTaxGrpPPType]
+  employersUseGrp : [EmployersUseGrpType]
+}
+
+type BusinessNameType {
+  businessNameLine1Txt : String
+}
+
+type W2StateTaxGrpPPType {
+  stateAbbreviationCd : String
+  stateIncomeTaxAmt : Amount
+}
+
+type EmployersUseGrpType {
+  employersUseCd : String
+  employersUseAmt : Amount
+}
+
+type IraContributionsWksType {
+  taxpayerDeductibleTraditionalIRA : Amount
+}
+
+type Irs8949Type {
+  shortTermTotalGainOrLoss : Amount
+  longTermTotalGainOrLoss : Amount
+}
+
+type Irs1098EType {
+  lenderName: String
+  borrowerSSN: String
+  loanInterestAmt : Amount
+}
+
+type Irs8889Type {
+  taxpayer : HSAContribution8889Type
+  spouse : HSAContribution8889Type
+}
+
+type HSAContribution8889Type {
+  employeeHSAContribution : Amount
+  employerHSAContribution : Amount
+}
+
+type Irs1099RType {
+  recipientNm: String
+  payerEIN: String
+  payerName : BusinessNameType
+  grossDistributionAmt : Amount
+  taxableAmt: Amount
+  f1099DistributionCd : String
+  f1099DistributionCdB: String
+  iRASEPSIMPLEInd: Boolean
+  spouseRetirement : Boolean
+  totalDistributionInd: Boolean
+  txblAmountNotDeterminedInd: Boolean
+}
+
+type Pp1099MiscType {
+  rentsAmtPP : Amount
+  royaltiesAmtPP : Amount
+  otherIncomeAmtPP : Amount
+  federalIncomeTaxWithheldAmtPP: Amount
+  nonEmployeeCompensationAmtPP : Amount
+}
+
+type SocialSecurityBenefitsWorksheetType {
+  taxpayer : SSTotalBenefitWSType
+  spouse : SSTotalBenefitWSType
+}
+
+type SSTotalBenefitWSType {
+  totalNetBenefits : Amount
+}
+
+type W2SummaryType {
+  electiveDeferralsTP : Amount
+  electiveDeferralsSP : Amount
+  totalElectiveDeferrals : Amount
+  taxpayerW2NontaxableCombatPay : Amount
+  spouseW2NontaxableCombatPay : Amount
+  totalW2NontaxableCombatPay : Amount
+}
+
+type DependentCareEarnedIncomeWorksheetPPType {
+  taxpayerDepcareWksNetSEIncomePP: Amount
+  taxpayerDepcareWksNetWagesMinus457PlansPP: Amount
+  spouseDepcareWksNetWagesMinus457PlansPP: Amount
+  spouseDepcareWksNetSEIncomePP: Amount
+}

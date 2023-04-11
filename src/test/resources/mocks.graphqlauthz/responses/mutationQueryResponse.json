@@ -1,0 +1,19 @@
+{
+  "data": {
+    "createNewBookRecord": {
+      "id": "Book-7",
+      "name": "New World",
+      "pageCount": 1001,
+      "author": {
+        "firstName": "Mickey",
+        "lastName": "Mouse"
+      }
+    },
+    "updateBookRecord": {
+      "id": "book-3"
+    },
+    "removeBookRecord": {
+      "id": "book-1"
+    }
+  }
+}

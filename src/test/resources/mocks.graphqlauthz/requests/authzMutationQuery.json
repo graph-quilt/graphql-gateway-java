@@ -1,0 +1,7 @@
+{
+ "query": "mutation { createNewBookRecord(input: {  id: \"Book-7\",  name: \"New World\",  pageCount: 1001,  author:{ id: \"Author-7\" firstName: \"Mickey\", lastName: \"Mouse\"  } }) {  id  name  pageCount  author{ firstName lastName  } } updateBookRecord(input: { id: \"book-3\", name: \"test updates\", pageCount: 100  }) { id  } removeBookRecord(input: { id: \"book-1\"  }) { id  }\n}",
+ "variables": null,
+ "operationName": null
+}
+
+

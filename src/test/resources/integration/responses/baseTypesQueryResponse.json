@@ -1,0 +1,16 @@
+{
+  "data": {
+    "standardTypes": {
+      "int": 1234,
+      "float": 1234.56,
+      "string": "aabbcc",
+      "boolean": true,
+      "id": "aabbcc",
+      "bigDecimal": 12345.67,
+      "bigInt": 123456,
+      "short": 1,
+      "long": 1234,
+      "char": "a"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+schema {
+  query: QueryType
+  mutation: MutationType
+}
+
+type MutationType {
+
+}
+
+type QueryType {
+  standardTypes: StandardTypes
+}
+
+type StandardTypes {
+  # Spec Scalars
+  int: Int
+  float: Float
+  string: String
+  boolean: Boolean
+  id: ID
+
+  #GraphQL Java Standard Scalars
+  #  bigDecimal: BigDecimal
+  #  bigInt: BigInteger
+  #  #    byte: Byte
+  #  short: Short
+  #  long: Long
+  #  char: Char
+}
+

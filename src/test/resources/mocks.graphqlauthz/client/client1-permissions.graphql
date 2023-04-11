@@ -1,0 +1,10 @@
+{
+  book {
+    id
+    name
+    pageCount
+    author {
+      firstName
+    }
+  }
+}

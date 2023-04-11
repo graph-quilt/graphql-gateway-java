@@ -1,0 +1,5 @@
+{
+  "query": "query { allCasesAssignedToMe { id } allCases { id } consumer { identity { personalInfo { currentFamilyName } } } }",
+  "variables": null,
+  "operationName": null
+}

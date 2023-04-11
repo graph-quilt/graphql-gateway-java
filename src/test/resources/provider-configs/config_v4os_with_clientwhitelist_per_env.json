@@ -1,0 +1,35 @@
+{
+  "namespace": "V4OS",
+  "appId": "Intuit.tax.testwithdomaintypes",
+  "type": "Graphql-Sdl",
+  "forward-headers": [
+    "foo",
+    "bar",
+    "user_channel"
+  ],
+  "environments": {
+    "dev": {
+      "client-whitelist": [  "intuit.android.test-client" ],
+      "endpoint": "https://test-app-dev.api.intuit.com/graphql",
+      "timeout": 4000
+    },
+    "qa": {
+      "endpoint": "https://test-app-cdev.api.intuit.com/graphql"
+    },
+    "E2e": {
+      "endpoint": "https://test-app-e2e.api.intuit.com/graphql"
+    },
+    "pErF": {
+      "endpoint": "http://test-app-prf.api.intuit.com/graphql"
+    },
+    "PROD": {
+      "client-whitelist": [  "intuit.browser.test-client" ],
+      "endpoint": "https://test-app.api.intuit.com/graphql"
+    },
+    "pRoD-Stg": {
+      "endpoint": "https://test-app.api.intuit.com/graphql"
+    }
+  },
+  "domain-types": [ "TaxType", "ReturnDataType" ],
+  "client-whitelist": [ "intuit.services.test-service", "intuit.ios.test-client" ]
+}

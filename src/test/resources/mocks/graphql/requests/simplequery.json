@@ -1,0 +1,5 @@
+{
+  "query": "query { allCasesAssignedToMe { id } }",
+  "variables": null,
+  "operationName": null
+}

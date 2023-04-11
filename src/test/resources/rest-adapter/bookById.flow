@@ -1,0 +1,7 @@
+Service service as ServiceClient method GET {
+  Url -> @Config("endpoint")
+  Path -> ${"/books/{bookId}"}
+  Timeout -> ${@Config("timeout")}
+  @PathParam bookId -> ${requestContext.arguments.id}
+  @Header accept -> ${"application/json"}
+}

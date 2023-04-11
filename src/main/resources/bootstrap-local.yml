@@ -1,0 +1,40 @@
+log:
+  debug: false
+authz:
+  enabled: false
+
+
+metrics:
+  execution:
+    enabled: true
+
+app:
+  logging:
+    env: local
+
+spring:
+  cloud:
+    config:
+      allowOverride: true
+      overrideNone: false
+      overrideSystemProperties: false
+
+aws:
+  s3:
+    env: dev
+    buckets:
+      useast2:
+        bucketname: topics
+        endpoint: http://localhost:4572
+      uswest2:
+        bucketname: topics
+        endpoint: http://localhost:4572
+    polling:
+      period: 30s
+      syncDelay: 0s
+
+registration:
+  breaking-change:
+    check:
+      enabled: true
+      whiteListedApps:

@@ -1,0 +1,13 @@
+{
+  "data": {
+    "book": {
+      "id": "book-2",
+      "name": "Moby Dick",
+      "pageCount": 635,
+      "author": {
+        "firstName": "Herman",
+        "lastName": "Bla"
+      }
+    }
+  }
+}

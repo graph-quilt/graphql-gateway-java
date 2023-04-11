@@ -1,0 +1,7 @@
+{
+  "query": "query { book { id  name pageCount author { firstName lastName}}}",
+  "variables": null,
+  "operationName": null
+}
+
+

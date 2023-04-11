@@ -1,0 +1,2 @@
+FROM amazoncorretto:8u332
+COPY .m2 /root/.m2

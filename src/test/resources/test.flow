@@ -1,0 +1,24 @@
+//Dummy Flow Syntax
+Schema requestContext {
+    transactionContext {
+        string authId
+    }
+    userContext {
+    	string authId
+    }
+    queryParams {
+        string taxYear
+    }
+    headers {
+   		string clientid
+   	}
+}
+
+Schema dummySchema { string dummy }
+Mapping dummyMapping input requestContext output dummySchema {}
+
+Flow taxTypeFlow {
+	Start dummyMapping {
+
+	}
+}

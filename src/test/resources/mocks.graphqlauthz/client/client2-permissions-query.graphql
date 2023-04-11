@@ -1,0 +1,9 @@
+{
+  book {
+    id
+    name
+    author {
+      firstName
+    }
+  }
+}

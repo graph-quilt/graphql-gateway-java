@@ -1,0 +1,25 @@
+{
+  "namespace":"USERS",
+  "appId":"UserService.Appid",
+  "type":"graphql-sdl",
+  "environments": {
+    "DEV":{
+      "endpoint":"http://localhost:9093/graphql"
+    },
+    "QA":{
+      "endpoint":"http://localhost:9093/graphql"
+    },
+    "E2E":{
+      "endpoint":"http://localhost:9093/graphql"
+    },
+    "PERF":{
+      "endpoint":"http://localhost:9093/graphql"
+    },
+    "PROD-STG":{
+      "endpoint":"http://localhost:9093/graphql"
+    },
+    "PROD":{
+      "endpoint":"http://localhost:9093/graphql"
+    }
+  }
+}

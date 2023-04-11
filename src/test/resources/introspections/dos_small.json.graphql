@@ -1,0 +1,334 @@
+# This file was generated based on "dos_small.json". Do not edit manually.
+
+schema {
+    query: QueryExpandableType
+    mutation: MutationExpandableType
+}
+
+type Activity {
+    action: String
+    actionType: String
+    activityDetails: [ActivityDetail]
+    actorId: String
+    actorIdType: String
+    actorName: String
+    actorRole: String
+    beneficiaryId: String
+    beneficiaryIdType: String
+    beneficiaryName: String
+    beneficiaryRole: String
+    description: String
+    entity: String
+    entityId: String
+    source: String
+    timeStamp: Long
+}
+
+type ActivityDetail {
+    key: String!
+    value: String!
+}
+
+type Assignee {
+    ref: String
+    type: String
+}
+
+type Case {
+    area: String
+    assignee: Assignee
+    autoJoin: Boolean
+    caseAlternateEmail: String
+    caseAlternateFirstName: String
+    caseAlternateLastName: String
+    caseAlternatePhone: String
+    caseChannel: String
+    caseDetail: CaseDetail
+    caseNumber: Long!
+    caseOrigin: String
+    caseOwner: String
+    caseType: String
+    category: String
+    comments: [SfCaseComment]
+    contact: Contact
+    description: String
+    externalReferenceID: String
+    externalStatus: String
+    externalSystem: String
+    has8879Document: Boolean
+    hasNewDocument: Boolean
+    hasNewMessage: Boolean
+    id: String
+    interactionId: String
+    locale: String
+    priority: String
+    product: String
+    productDetail: String
+    relatedCaseId: String
+    returnFiledIn: String
+    sbIssueArea: String
+    sbIssueSubArea: String
+    sbIssueType: String
+    sbOffering: String
+    segment: String
+    serviceType: String
+    status: String
+    subArea: String
+    subCategory: String
+    subject: String
+    taxPrepStatus: String
+    timeClosed: String
+    timeModified: String
+    timeOpened: String
+    type: String
+}
+
+type CaseDetail {
+    customerBrowser: String
+    customerBrowserVersion: String
+    customerOS: String
+    customerOSVersion: String
+    errorCode: String
+    financialInstitutionId: String
+    financialInstitutionName: String
+    orderNumber: String
+    providerId: String
+    providerName: String
+    reason: String
+    timeOfError: String
+    transactionalIssue: String
+}
+
+" in the future, we need to auto-generate either class or graphql schema"
+type Contact {
+    accountId: String
+    authId: String
+    email: String
+    firstName: String
+    lastName: String
+    name: String
+    phone: String
+    recordId: String
+}
+
+type Context {
+    entitlementName: String
+    product: String
+    productFamilyId: String
+    productName: String
+    taxYear: String
+}
+
+type Conversation {
+    id: String
+    messageList: [Message]
+    ownerId: String
+    " See model for naming convention reasoning"
+    ppConversationAttributes: [ConversationAttribute]
+    timeStamp: String
+    topic: String
+}
+
+type ConversationAttribute {
+    key: String!
+    value: String!
+}
+
+type Entitlement {
+    feature: [Feature]
+    offeringId: String
+}
+
+type Feature {
+    context: Context
+    enabled: Boolean
+    reason: String
+    scope: String
+    source: String
+    trial: Boolean
+    unitType: String
+    used: String
+}
+
+type Message {
+    content: String
+    conversationId: String
+    fromId: String
+    ppMessageAttributes: [MessageAttribute]
+    timeStamp: String
+    toId: String
+    unread: Boolean
+}
+
+type MessageAttribute {
+    key: String!
+    value: String!
+}
+
+type MutationExpandableType {
+    addActivity(input: AddActivityInput): Activity
+    addCaseComment(input: AddCaseCommentInput): SfCaseComment
+    createConversation(input: CreateConversationInput): Conversation
+    createMessage(input: CreateMessageInput): Message
+    placeholder: String
+    unassignCase(input: UpdateCaseAssignmentInput): Assignee
+    updateCase(input: UpdateCaseInput): Case
+    updateCaseAssignment(input: UpdateCaseAssignmentInput): Assignee
+    updateEntitlement(input: UpdateEntitlementInput): Feature
+}
+
+type QueryExpandableType {
+    activity(entityId: String, entityType: String): [Activity]
+    allCases(authId: String, email: String, phone: String): [Case]
+    allCasesAssignedToMe(closedInLastNDays: Int, createdInLastNDays: Int, status: String): [Case]
+    allOpenCases(authId: String!, serviceType: [String]): [Case]
+    caseByNumber(caseNumber: String!): Case
+    caseCommentsByCaseNumber(caseNumber: String!): [SfCaseComment]
+    getConversations(conversationType: AllowedConversationType, markAsRead: Boolean, ppConversationAttributes: [ConversationAttributeInput], topic: String, userId: String!): [Conversation]
+    getEntitlement(enabledOnly: Boolean, offeringId: String, ownerId: String, suppressContext: Boolean, unitType: String): [Entitlement]
+    getMessages(conversationId: String!, markAsRead: Boolean, messageType: AllowedMessageType): [Message]
+    placeholder: String
+}
+
+type SfCaseComment {
+    comments: String
+    createdBy: String
+    createdDate: String
+    id: String
+    modifiedBy: String
+    modifiedDate: String
+}
+
+enum AllowedConversationType {
+    MESSAGING
+    OFFLINE_REVIEW
+    WRAP_UP
+}
+
+enum AllowedMessageType {
+    JSON
+    TEXT
+}
+
+input ActivityDetailInput {
+    key: String!
+    value: String!
+}
+
+input AddActivityInput {
+    action: String
+    actionType: String
+    activityDetails: [ActivityDetailInput]
+    actorId: String
+    actorIdType: String
+    actorName: String
+    actorRole: String
+    beneficiaryId: String
+    beneficiaryIdType: String
+    beneficiaryName: String
+    beneficiaryRole: String
+    description: String
+    entity: String
+    entityId: String
+    source: String
+    timeStamp: Long
+}
+
+input AddCaseCommentInput {
+    caseNumber: Long
+    comments: String
+}
+
+input ConversationAttributeInput {
+    key: String!
+    value: String!
+}
+
+input CreateConversationInput {
+    conversationType: AllowedConversationType!
+    messageList: [MessageInput]
+    ownerId: String!
+    ppConversationAttributes: [ConversationAttributeInput]
+    topic: String!
+}
+
+input CreateMessageInput {
+    content: String
+    conversationId: String
+    messageType: AllowedMessageType!
+    ppMessageAttributes: [MessageAttributeInput]
+    toId: String
+}
+
+input MessageAttributeInput {
+    key: String!
+    value: String!
+}
+
+input MessageInput {
+    content: String
+    conversationId: String
+    fromId: String
+    messageType: AllowedMessageType!
+    ppMessageAttributes: [MessageAttributeInput]
+    toId: String
+}
+
+input UpdateCaseAssignmentInput {
+    caseNumber: Long!
+    ref: String
+    type: String
+}
+
+input UpdateCaseInput {
+    area: String
+    autoJoin: String
+    caseAlternateEmail: String
+    caseAlternateFirstName: String
+    caseAlternateLastName: String
+    caseAlternatePhone: String
+    " these 2 are required for URL params"
+    caseNumber: Long
+    caseOrigin: String
+    caseOwner: String
+    caseType: String
+    category: String
+    description: String
+    externalReferenceID: String
+    externalStatus: String
+    externalSystem: String
+    has8879Document: String
+    hasNewDocument: String
+    hasNewMessage: String
+    parent: String
+    patch: String!
+    priority: String
+    product: String
+    productDetail: String
+    relatedCaseId: String
+    returnFiledIn: String
+    sbIssueArea: String
+    sbIssueSubArea: String
+    sbIssueType: String
+    sbOffering: String
+    segment: String
+    serviceType: String
+    status: String
+    subArea: String
+    subCategory: String
+    subject: String
+    taxPrepStatus: String
+    type: String
+}
+
+input UpdateEntitlementInput {
+    offeringId: String
+    ownerId: String
+    scope: String
+    unitType: String
+    used: String
+}
+
+
+"Long type"
+scalar Long

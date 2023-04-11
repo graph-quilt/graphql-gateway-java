@@ -1,0 +1,13 @@
+aws:
+  s3:
+    env: qa
+    version: 1.0.0
+    buckets:
+      useast2:
+        bucketName: test-bucket-us-east-2
+        endpoint: https://s3-us-east-2.amazonaws.com
+        region: us-east-2
+      uswest2:
+        bucketName: test-bucket-us-west-2
+        endpoint: https://s3-us-west-2.amazonaws.com
+        region: us-west-2

@@ -1,0 +1,126 @@
+###########################################################################
+# This project uses the same credentials as Data orch service (temporary) #
+###########################################################################
+
+### App Properties - Business Logic
+###
+### These are shared properties to be overridden in the
+### environment-based properties.
+
+
+spring:
+  # This is used for searching properties files, YAML, profiles.
+  application:
+    name: GraphqlGateway
+  # Disable favicon
+  mvc:
+    favicon:
+      enabled: false
+  main:
+    allow-bean-definition-overriding: true
+
+# Disable server advertising its type and version
+server:
+  server-header: server
+  port: 7000
+  error:
+    include-stacktrace: always
+    include-exception: true
+    include-message: always
+
+management:
+  metrics:
+    distribution:
+      percentiles[http.server.requests]: 0.50,0.90,0.95,0.99
+      percentiles[http.client.requests]: 0.50,0.90,0.95,0.99
+    export:
+      statsd:
+        polling-frequency: 15s
+        host: localhost
+        port: 8190
+        enabled: true
+        flavor: telegraf
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+    enabled-by-default: false
+  endpoint:
+    metrics:
+      enabled: true
+    health:
+      enabled: true
+    env:
+      enabled: true
+    info:
+      enabled: true
+
+
+webclient:
+  introspection:
+    retries: 3
+  timeout: 10000
+  connectTimeout: 1000
+  codec:
+    max-in-memory-size-in-mbytes: 20
+  connection-provider:
+    enabled: true
+    max-connections: 500
+    max-life-sec: 600
+
+
+aws:
+  s3:
+    env: e2e
+    appName: graphql-gateway-java
+    version: 1.0.0
+    enabled: true
+    buckets:
+      useast2:
+        bucketname: topics
+        endpoint: https://s3-us-east-2.amazonaws.com
+        region: us-east-2
+      uswest2:
+        bucketname: topics
+        endpoint: https://s3-us-west-2.amazonaws.com
+        region: us-west-2
+    upload:
+      maxDeleteRetries: 5
+      environments:
+        - ${aws.s3.env}
+    polling:
+      enabled: true
+      period: 300s
+      syncDelay: 0s
+      maxRetryAttempts: 3
+      # default bucket and endpoint to us-west-2 for non-region specific environments (eg: dev, local)
+      endpoint: ${aws.s3.buckets.uswest2.endpoint}
+      bucketname: ${aws.s3.buckets.uswest2.bucketname}
+
+
+stitching:
+  rebuild: true
+
+
+introspection:
+  enabled: true
+  allowedEnvironments:
+    - "cdev"
+    - "cperf.useast2"
+    - "cperf.uswest2"
+    - "cperf"
+    - "dev"
+    - "local"
+    - "qa"
+    - "e2e"
+    - "prod"
+    - "prod-stg"
+
+registration:
+  breaking-change:
+    check:
+      enabled: false
+
+metrics:
+  execution:
+    enabled: true

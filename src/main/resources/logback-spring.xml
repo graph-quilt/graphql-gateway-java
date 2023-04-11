@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <property name="PROJECT_ID" value="GraphqlGatewayService"/>
+  <property name="LOGFILE_NAME" value="/app/java/graphql-gateway-java/logs/graphql-gateway-java-9000.log" />
+	<property name="TEST_LOGFILE_NAME" value="/app/logs/service-test.log"/>
+
+  <logger level="WARN" name="sun"/>
+  <logger level="WARN" name="io.netty"/>
+  <logger level="WARN" name="reactor"/>
+  <logger level="ERROR" name="org.springframework"/>
+  <logger level="ERROR" name="org.apache"/>
+
+  <springProfile name="local">
+    <!--include resource="org/springframework/boot/logging/logback/base.xml"/-->
+    <appender class="ch.qos.logback.core.ConsoleAppender" name="consoleJson">
+      <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+        <jsonGeneratorDecorator
+          class="net.logstash.logback.decorate.PrettyPrintingJsonGeneratorDecorator"/>
+      </encoder>
+    </appender>
+  </springProfile>
+  <springProfile name="!local">
+    <appender class="ch.qos.logback.core.ConsoleAppender" name="consoleJson">
+      <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
+    </appender>
+    <appender name="fileAppenderJsonMain" class="ch.qos.logback.core.rolling.RollingFileAppender">
+      <File>${LOGFILE_NAME}</File>
+      <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+        <throwableConverter class="net.logstash.logback.stacktrace.ShortenedThrowableConverter">
+          <maxDepthPerThrowable>50</maxDepthPerThrowable>
+          <maxLength>9000</maxLength>
+          <shortenedClassNameLength>20</shortenedClassNameLength>
+          <rootCauseFirst>true</rootCauseFirst>
+        </throwableConverter>
+      </encoder>
+      <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+        <maxIndex>1</maxIndex>
+        <FileNamePattern>${LOGFILE_NAME}.%i</FileNamePattern>
+      </rollingPolicy>
+      <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+        <MaxFileSize>1GB</MaxFileSize>
+      </triggeringPolicy>
+    </appender>
+    <appender name="fileAppenderJsonTest" class="ch.qos.logback.core.rolling.RollingFileAppender">
+      <File>${TEST_LOGFILE_NAME}</File>
+      <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+        <throwableConverter class="net.logstash.logback.stacktrace.ShortenedThrowableConverter">
+          <maxDepthPerThrowable>50</maxDepthPerThrowable>
+          <maxLength>9000</maxLength>
+          <shortenedClassNameLength>20</shortenedClassNameLength>
+          <rootCauseFirst>true</rootCauseFirst>
+        </throwableConverter>
+      </encoder>
+      <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+        <maxIndex>1</maxIndex>
+        <FileNamePattern>${LOGFILE_NAME}.%i</FileNamePattern>
+      </rollingPolicy>
+      <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+        <MaxFileSize>1GB</MaxFileSize>
+      </triggeringPolicy>
+    </appender>
+  </springProfile>
+
+  <root level="info">
+    <springProfile name="local">
+      <appender-ref ref="consoleJson"/>
+    </springProfile>
+    <springProfile name="!local">
+      <appender-ref ref="fileAppenderJsonMain"/>
+      <appender-ref ref="fileAppenderJsonTest"/>
+    </springProfile>
+  </root>
+
+</configuration>

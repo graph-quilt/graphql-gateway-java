@@ -1,0 +1,106 @@
+type Query {
+    petsByStatus(status: Status!): [Pet!]!
+    petById(id: ID!): Pet
+    storeInventory : StoreInventory!
+    petByObjectId(petId: PetId) : Pet
+    ping : String
+}
+
+
+type Mutation {
+    """
+    Adds a Cat to the Store
+    """
+    addCat(newCat: NewCatInput!): Cat!
+
+    """
+    Adds a Dog to the Store
+    """
+    addDog(newDog: NewDogInput!): Dog!
+
+    """
+    Deletes a pet by ID
+    """
+    deletePetById(id : ID!) : Pet
+}
+
+input PetId {
+    id: ID
+}
+
+"""
+Translates a string from a given language into a different language.
+"""
+type StoreInventory {
+    available : Int!
+    pending : Int!
+    sold: Int!
+}
+
+interface Animal {
+    speciesName: String
+}
+
+"""
+Pet Interface
+"""
+interface Pet {
+    id: ID!
+    name: String!
+    status: Status!
+    price: Amount
+}
+
+type Dog implements Pet {
+    # Note: to test @Auth, include http header USER_ROLE=payingSubscriber which should
+    # return price with value.  otherwise, price=null is the response.
+    # Insomnia (https://insomnia.rest/graphql/) is capable of letting one define header and values.
+    id: ID!
+    name: String!
+    status: Status!
+    price: Amount
+    licenseNo: String
+    speciesName: String
+}
+
+type Cat implements Pet {
+    id: ID!
+    name: String!
+    status: Status!
+    price: Amount
+    livesLeft: Int
+}
+
+"""
+NewDogInput  Description
+"""
+input NewDogInput {
+    id: ID!
+    name: String!
+    price: Amount
+    licenseNo: String
+    species_name: String
+}
+
+input NewCatInput {
+    id: ID!
+    name: String!
+    price: Amount
+    species_name: String
+}
+
+"""
+Enum Status Description
+"""
+enum Status {
+    AVAILABLE
+    PENDING
+    SOLD
+}
+
+"""
+Custom Scalar representing two decimal digit
+"""
+scalar Amount
+
+union CatOrDog = Dog | Cat
