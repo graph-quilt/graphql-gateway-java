@@ -27,34 +27,35 @@ Make sure you have the following installed on your machine
 * jdk 1.8
 * maven
 * docker
-* awscli - _make sure you have configured a value(any string value is fine) for keyid, key and region._
+* awscli 
 
 ### Running the graphql-gateway-java locally
 
-* Install [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-mac.html#cliv2-mac-install-cmd) 
-and configure credentials and region (any string value is fine).
+When running the application locally, [localstack](https://localstack.cloud/) is used to mock AWS S3.  Follow this steps to start the application.
+
+* Build the project
+    ```
+    mvn clean install
+    ```
+
+* Run aws configure.  Enter any value to the prompts presented.  Since localstack is used, a real AWS credential is not needed.
     ```
     aws configure
     ```
+
+* Start Docker daemon if not running.
     
-* Start up the local registry
+* Start the local registry.  This starts a localstack docker container.
     ```
     ./local_registry/start.sh
     ```
   
-* Set up the registry for the application. This will initialize the registry with providers in `local_registry` folder.
-    ```
-    ./local_registry/setup.sh
-    ```
-    OR
-     
-    Add `--empty-registry` option to create an empty registry. You will need this if you are registering a provider by 
-    manually uploading files. 
+* Set up the local registry.  This will initialize the registry with example service providers in `local_registry` folder.
     ```
     ./local_registry/setup.sh --empty-registry
     ```
     
-* Start the application. Default port: 7000
+* Start the application.  Once started, it listens on port 7000
 
     ```
     ./run.sh
@@ -65,18 +66,10 @@ and configure credentials and region (any string value is fine).
     
 **No need to restart the application when new you register a new provider service**.
 
-* After making any updates to the providers in the `local_registry`, just re-run the correct `setup.sh`. 
-**No need to restart the application**.
 
 ### Run with docker compose
 
 The docker compose will start both **localstack** and **graphql gateway**.  To start, run the command
-
-`$ docker compose up`
-
-this creates empty registry.
-
-Or, run
 
 `$ docker compose -f docker-compose-local-registry.yml up`
 
