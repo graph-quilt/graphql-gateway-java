@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   localstack:
-    container_name: "${LOCALSTACK_DOCKER_NAME-localstack_main}"
+    container_name: "local_aws_s3"
     image: localstack/localstack
     ports:
       - "127.0.0.1:4572:4566"            # LocalStack Gateway
