@@ -24,7 +24,7 @@ createTopic() {
 # Create Topic Function
 createDefaultRegistrations() {
   echo "Updating topics bucket with registry from $GQL_GW_DIR/dev folder"
-  aws --endpoint-url=http://localhost:4572 s3 cp dev s3://topics/graphql-gateway/dev/ --recursive
+  aws --endpoint-url=http://localhost:4572 s3 cp dev s3://topics/graphql-gateway-java/dev/ --recursive
   echo "Registry setup completed"
 }
 
