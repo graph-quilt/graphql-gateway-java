@@ -65,15 +65,6 @@ When running the application locally, [localstack](https://localstack.cloud/) is
     Run the class `GraphqlGatewayApplication` as Spring Application using IntelliJ. Set the active profile as **local**.
     
 **No need to restart the application when new you register a new provider service**.
-
-
-### Run with docker compose
-
-The docker compose will start both **localstack** and **graphql gateway**.  To start, run the command
-
-`$ docker compose -f docker-compose-local-registry.yml up`
-
-You should see the Spring Boot Logo and a message "Started GraphQLGatewayApplication ..."
   
 ### Test using GraphiQL
 
