@@ -33,29 +33,29 @@ Make sure you have the following installed on your machine:
 
 When running the application locally, [localstack](https://localstack.cloud/) is used to mock AWS S3.  Follow these steps to start the application.
 
-* Build the project:
+1. Build the project:
     ```
     mvn clean install
     ```
 
-* Run aws configure. Enter any value to the prompts presented. Since localstack is used, a real AWS credential is not needed, but make sure to input a valid region name (e.g. `us-west-1`) and output format (e.g. `json`).
+2. Run aws configure. Enter any value to the prompts presented. Since localstack is used, a real AWS credential is not needed, but make sure to input a valid region name (e.g. `us-west-1`) and output format (e.g. `json`).
     ```
     aws configure
     ```
 
-* Start Docker daemon if not already running.
+3. Start Docker daemon if not already running.
     
-* Start the local registry. This starts a localstack docker container.
+4. Start the local registry. This starts a localstack docker container.
     ```
     ./local_registry/start.sh
     ```
   
-* Set up the local registry. This will initialize the registry with example service providers in `local_registry` folder.
+5. Set up the local registry. This will initialize the registry with example service providers in `local_registry` folder.
     ```
     ./local_registry/setup.sh --empty-registry
     ```
     
-* Start the application. Once started, it listens on port 7000.
+6. Start the application. Once started, it listens on port 7000.
 
     ```
     ./run.sh
@@ -64,7 +64,7 @@ When running the application locally, [localstack](https://localstack.cloud/) is
    
     Run the class `GraphqlGatewayApplication` as Spring Application using IntelliJ. Set the active profile as **local**.
 
-**NOTE: You do not need to restart the application when you register a new provider service**.
+> **NOTE: You do not need to restart the application when you register a new provider service**.
 
 
 ### Test using GraphiQL
