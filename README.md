@@ -14,7 +14,7 @@ graphql-gateway-java exposes data from various graph microservices using a singl
 registered with the Gateway using the `/register` endpoint. It uses [graphql orchestrator library](https://github.com/graph-quilt/graphql-orchestrator-java) for federating schemas from 
 various data providers. 
 
-Top Highlights include
+Highlights:
 
 * Dynamic registration so that the gateway is loosely coupled with the provider development lifecycle.
 * Registering REST endpoints using the [@adapter](https://github.com/graph-quilt/graphql-service-adapters) directive and Service DSL
@@ -22,40 +22,40 @@ Top Highlights include
 
 ### Pre-requisites
 
-Make sure you have the following installed on your machine
+Make sure you have the following installed on your machine:
 
-* jdk 1.8
-* maven
-* docker
-* awscli 
+* [Java 11](https://www.oracle.com/java/technologies/downloads/#java11)
+* [Maven](https://maven.apache.org/install.html)
+* [Docker](https://docs.docker.com/engine/install/)
+* [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) 
 
 ### Running the graphql-gateway-java locally
 
-When running the application locally, [localstack](https://localstack.cloud/) is used to mock AWS S3.  Follow this steps to start the application.
+When running the application locally, [localstack](https://localstack.cloud/) is used to mock AWS S3.  Follow these steps to start the application.
 
-* Build the project
+* Build the project:
     ```
     mvn clean install
     ```
 
-* Run aws configure.  Enter any value to the prompts presented.  Since localstack is used, a real AWS credential is not needed.
+* Run aws configure. Enter any value to the prompts presented. Since localstack is used, a real AWS credential is not needed, but make sure to input a valid region name (e.g. `us-west-1`) and output format (e.g. `json`).
     ```
     aws configure
     ```
 
-* Start Docker daemon if not running.
+* Start Docker daemon if not already running.
     
-* Start the local registry.  This starts a localstack docker container.
+* Start the local registry. This starts a localstack docker container.
     ```
     ./local_registry/start.sh
     ```
   
-* Set up the local registry.  This will initialize the registry with example service providers in `local_registry` folder.
+* Set up the local registry. This will initialize the registry with example service providers in `local_registry` folder.
     ```
     ./local_registry/setup.sh --empty-registry
     ```
     
-* Start the application.  Once started, it listens on port 7000
+* Start the application. Once started, it listens on port 7000.
 
     ```
     ./run.sh
@@ -63,15 +63,18 @@ When running the application locally, [localstack](https://localstack.cloud/) is
     OR 
    
     Run the class `GraphqlGatewayApplication` as Spring Application using IntelliJ. Set the active profile as **local**.
-    
-**No need to restart the application when new you register a new provider service**.
-  
+
+**NOTE: You do not need to restart the application when you register a new provider service**.
+
+
 ### Test using GraphiQL
 
 * Navigate to [http://localhost:7000/graphiql](http://localhost:7000/graphiql)
+* We also have [example subgraphs](https://github.com/graph-quilt/example-subgraphs) with registration instructions for easy testing.
 
 ### Documentation
-[graphql-gateway-documentation](https://graph-quilt.github.io/graphql-orchestrator-java/) <br/>
+
+* [graphql-gateway-documentation](https://graph-quilt.github.io/graphql-orchestrator-java/)
 
 
 ### Intellij development
@@ -81,4 +84,4 @@ When running the application locally, [localstack](https://localstack.cloud/) is
 
 ## Contributing
 
-Please see our [contribution guide](.github/CONTRIBUTING.md)
+Please see our [contribution guide](.github/CONTRIBUTING.md).
