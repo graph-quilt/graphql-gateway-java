@@ -20,7 +20,7 @@ Highlights:
 * Registering REST endpoints using the [@adapter](https://github.com/graph-quilt/graphql-service-adapters) directive and Service DSL
 * Attribute Based Access Control using the [graphql-authorization-java](https://github.com/graph-quilt/graphql-authorization-java) library.
 
-### Pre-requisites
+### Prerequisites
 
 Make sure you have the following installed on your machine:
 
@@ -29,7 +29,7 @@ Make sure you have the following installed on your machine:
 * [Docker](https://docs.docker.com/engine/install/)
 * [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) 
 
-### Running the graphql-gateway-java locally
+### Running graphql-gateway-java locally
 
 When running the application locally, [localstack](https://localstack.cloud/) is used to mock AWS S3.  Follow these steps to start the application.
 
